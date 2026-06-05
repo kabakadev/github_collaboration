@@ -127,7 +127,6 @@ export const useGitStore = create((set, get) => ({
       set({
         repo: r,
         pendingConflict: result,
-        events: [],
         toast: "Practice conflict ready — resolve it below.",
       });
     } else {

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import GitVisualizer from "./components/GitVisualizer";
 import GitControls from "./components/GitControls";
 import ConflictPlayground from "./components/ConflictPlayground";
+import SkillTracker from "./components/SkillTracker";
 import { useGitStore } from "./store/useGitStore";
 
 export default function App() {
@@ -50,6 +51,8 @@ export default function App() {
           <GitControls />
         </section>
       )}
+
+      <SkillTracker />
 
       {toast && <div className="toast">{toast}</div>}
 
