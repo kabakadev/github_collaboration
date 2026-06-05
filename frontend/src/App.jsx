@@ -5,6 +5,7 @@ import GitControls from "./components/GitControls";
 import ConflictPlayground from "./components/ConflictPlayground";
 import SkillTracker from "./components/SkillTracker";
 import SSHOnboarding from "./components/SSHOnboarding";
+import AIReviewer from "./components/AIReviewer";
 import { useGitStore } from "./store/useGitStore";
 
 export default function App() {
@@ -75,6 +76,7 @@ export default function App() {
         </section>
       )}
 
+      <AIReviewer />
       <SkillTracker />
 
       {toast && <div className="toast">{toast}</div>}
