@@ -2,6 +2,7 @@
 import { useEffect } from "react";
 import GitVisualizer from "./components/GitVisualizer";
 import GitControls from "./components/GitControls";
+import ConflictPlayground from "./components/ConflictPlayground";
 import { useGitStore } from "./store/useGitStore";
 
 export default function App() {
@@ -9,6 +10,7 @@ export default function App() {
   const clearToast = useGitStore((s) => s.clearToast);
   const reset = useGitStore((s) => s.reset);
   const pendingConflict = useGitStore((s) => s.pendingConflict);
+  const setupPracticeConflict = useGitStore((s) => s.setupPracticeConflict);
 
   useEffect(() => {
     if (!toast) return;
@@ -22,9 +24,14 @@ export default function App() {
         <h1>
           Collab<span>Playground</span>
         </h1>
-        <button className="reset" onClick={reset}>
-          ⟲ reset repo
-        </button>
+        <div className="header-btns">
+          <button className="reset" onClick={setupPracticeConflict}>
+            ⚔ practice conflict
+          </button>
+          <button className="reset" onClick={reset}>
+            ⟲ reset repo
+          </button>
+        </div>
       </header>
 
       <p className="tagline">
@@ -34,17 +41,15 @@ export default function App() {
 
       <section className="graph-section">
         <GitVisualizer />
-        {pendingConflict && (
-          <div className="conflict-banner">
-            ⚠ Merge conflict pending — the Collaboration Playground (Tier 2)
-            resolves this.
-          </div>
-        )}
       </section>
 
-      <section className="controls-section">
-        <GitControls />
-      </section>
+      {pendingConflict ? (
+        <ConflictPlayground />
+      ) : (
+        <section className="controls-section">
+          <GitControls />
+        </section>
+      )}
 
       {toast && <div className="toast">{toast}</div>}
 
@@ -57,6 +62,7 @@ export default function App() {
           background: #060912; min-height: 100vh; color: #e2e8f0;
         }
         header { display: flex; justify-content: space-between; align-items: center; }
+        .header-btns { display: flex; gap: 8px; }
         h1 { font-size: 26px; margin: 0; letter-spacing: -.02em; }
         h1 span { color: #22c55e; }
         .tagline { color: #64748b; font-size: 14px; margin: 4px 0 22px; }

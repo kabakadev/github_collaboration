@@ -102,4 +102,36 @@ export const useGitStore = create((set, get) => ({
       toast: "Repo reset.",
     });
   },
+
+  // Demo/practice helper: builds two diverging branches that conflict on the
+  // same line, then attempts the merge — leaving a pendingConflict ready to resolve.
+  setupPracticeConflict() {
+    let r = git.createRepo({ author: "you" });
+    r.workingFile = "# Team Notes\nMeeting at 3pm\nBring laptops\n";
+    r = git.stage(r);
+    r = git.commit(r, "base notes");
+
+    r = git.branch(r, "teammate");
+    r = git.checkout(r, "teammate");
+    r.workingFile = "# Team Notes\nMeeting at 5pm\nBring laptops\n";
+    r = git.stage(r);
+    r = git.commit(r, "teammate: move to 5pm");
+
+    r = git.checkout(r, "main");
+    r.workingFile = "# Team Notes\nMeeting at 2pm\nBring laptops\n";
+    r = git.stage(r);
+    r = git.commit(r, "you: move to 2pm");
+
+    const result = git.merge(r, "teammate");
+    if (result.status === "conflict") {
+      set({
+        repo: r,
+        pendingConflict: result,
+        events: [],
+        toast: "Practice conflict ready — resolve it below.",
+      });
+    } else {
+      set({ repo: result.repo, toast: "No conflict this time — try again." });
+    }
+  },
 }));
