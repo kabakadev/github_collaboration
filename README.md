@@ -5,7 +5,7 @@
 A full-stack web application built for a hackathon that teaches Git collaboration through gameplay. The parts beginners quit on — SSH key setup, merge conflicts, the first push — become guided levels instead of silent dead-ends.
 
 **Live app:** https://github-collaboration-by44.vercel.app  
-**Backend API:** https://collab-playground-api.onrender.com
+**Backend API:** https://github-collaboration.onrender.com
 
 ---
 
