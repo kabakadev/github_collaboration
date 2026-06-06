@@ -7,7 +7,8 @@
 import { useState } from "react";
 import { useGitStore } from "../store/useGitStore";
 
-const API = "http://localhost:8000";
+const API =
+  "https://github-collaboration-4jpfpdm6v-iankabaka1-gmailcoms-projects.vercel.app";
 
 function diffSummary(before, after) {
   const bLines = (before || "").split("\n");
