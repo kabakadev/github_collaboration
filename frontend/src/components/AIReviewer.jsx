@@ -62,7 +62,7 @@ export default function AIReviewer() {
     } catch (e) {
       setError(
         e.message.includes("fetch")
-          ? "Can't reach the backend. Make sure FastAPI is running on link"
+          ? "Can't reach the backend. Make sure FastAPI is running on link render"
           : e.message
       );
     } finally {
