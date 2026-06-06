@@ -63,7 +63,7 @@ export default function AIReviewer() {
     } catch (e) {
       setError(
         e.message.includes("fetch")
-          ? "Can't reach the backend. Make sure FastAPI is running on port 8000."
+          ? "Can't reach the backend. Make sure FastAPI is running on link"
           : e.message
       );
     } finally {
