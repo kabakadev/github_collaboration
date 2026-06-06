@@ -29,7 +29,7 @@ export default function App() {
       <div className="app">
         <header>
           <h1>
-            Collab<span>Playground</span>
+            Collab<span>Playgroun yaayd</span>
           </h1>
           <button className="reset" onClick={() => setSshDone(true)}>
             skip — already set up SSH ›
